@@ -1,0 +1,6 @@
+{
+  "name": "BCS PREP TRACKER",
+  "description": "Comprehensive BCS Preliminary preparation management system with mathematical page-range tracking, daily study logs, and analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
