@@ -11,7 +11,6 @@ import {
   Target,
   FileCheck,
   TrendingUp,
-  AlertCircle,
   Play,
   Plus,
   ArrowRight,
@@ -67,8 +66,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         ).toFixed(1)
       : '0.0';
 
-  const ethicsSubject = subjects.find((s) => s.id === 'ethics_governance');
-  const isEthicsUnconfigured = ethicsSubject && ethicsSubject.totalPages === null;
 
   // Subject-wise progress list
   const subjectProgress = subjects
@@ -121,28 +118,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto pb-12">
-      {isEthicsUnconfigured && (
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <AlertCircle className="w-5 h-5 text-amber-400 shrink-0" />
-            <div>
-              <div className="text-xs font-bold text-amber-300">
-                Ethics, Values and Good Governance: Page Count Pending
-              </div>
-              <div className="text-[11px] text-amber-200/70">
-                Initial configuration excluded invented page numbers. Set page count once your book arrives.
-              </div>
-            </div>
-          </div>
-          <button
-            onClick={() => setCurrentView('settings')}
-            className="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs font-semibold rounded-lg border border-amber-500/40 transition-colors whitespace-nowrap"
-          >
-            Configure Ethics
-          </button>
-        </div>
-      )}
-
+      
       {/* Hero Strip */}
       <div className="bg-linear-to-r from-slate-900 via-slate-900/90 to-teal-950/40 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
         <div>
@@ -154,7 +130,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             BCS Preliminary Preparation Command
           </h2>
           <p className="text-xs text-slate-400 mt-1 max-w-2xl">
-            Uttoron Series books · Assurance Question Bank · 12-Hour Daily Benchmark · Top Rank Target
+            Uttoron Series books · Assurance Question Bank · 14-Hour Daily Benchmark · Top Rank Target
           </p>
         </div>
 

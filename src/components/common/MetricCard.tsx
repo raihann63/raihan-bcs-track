@@ -52,18 +52,18 @@ export const MetricCard: React.FC<MetricCardProps> = ({
       </div>
 
       {(subtext || trend) && (
-        <div className="flex items-center gap-1.5 text-xs text-slate-400">
+        <div className="flex min-w-0 items-center gap-1.5 text-xs text-slate-400">
           {trend && (
             <span
-              className={`font-mono font-medium ${
+              className={`shrink-0 whitespace-nowrap font-mono font-medium ${
                 trend.positive ? 'text-teal-400' : 'text-slate-400'
               }`}
             >
               {trend.text}
             </span>
           )}
-          {trend && subtext && <span aria-hidden="true">·</span>}
-          {subtext && <span className="truncate">{subtext}</span>}
+          {trend && subtext && <span aria-hidden="true" className="shrink-0">·</span>}
+          {subtext && <span className="min-w-0 flex-1 truncate">{subtext}</span>}
         </div>
       )}
     </div>

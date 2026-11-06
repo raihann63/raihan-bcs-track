@@ -78,7 +78,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onCloseMobile })
                 <div className="text-sm font-extrabold tracking-wider text-white uppercase font-mono">
                   RAIHAN BCS TRACKER
                 </div>
-                <div className="text-[10px] text-teal-400 font-medium">4-Month Sprint · 12h/Day</div>
+                <div className="text-[10px] text-teal-400 font-medium">4-Month Sprint · 14h/Day</div>
               </div>
             </div>
           </div>

@@ -103,7 +103,7 @@ export interface ModelTestEntry {
 }
 
 export type DayOfWeek = 'Saturday' | 'Sunday' | 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday';
-export type TimeSlotId = 'slot1' | 'slot2' | 'slot3' | 'slot4';
+export type TimeSlotId = 'slot1' | 'slot2' | 'slot3';
 
 export interface RoutineSlot {
   id: string;

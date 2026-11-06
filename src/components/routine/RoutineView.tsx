@@ -36,10 +36,9 @@ export const RoutineView: React.FC<RoutineViewProps> = ({ onStartSessionFromSlot
   ];
 
   const timeSlots: { id: TimeSlotId; timeRange: string; label: string; duration: string }[] = [
-    { id: 'slot1', timeRange: '6:30–10:00', label: 'Slot 1: Morning Focus', duration: '3.5 Hours' },
-    { id: 'slot2', timeRange: '10:30–2:00', label: 'Slot 2: Mid-Day Deep Work', duration: '3.5 Hours' },
-    { id: 'slot3', timeRange: '3:30–7:00', label: 'Slot 3: Afternoon Intensive', duration: '3.5 Hours' },
-    { id: 'slot4', timeRange: '8:00–9:00', label: 'Slot 4: Evening Revision', duration: '1.0 Hour' },
+    { id: 'slot1', timeRange: '6:30 AM–12:30 PM', label: 'Morning (সকাল)', duration: '6 Hours' },
+    { id: 'slot2', timeRange: '2:00 PM–6:00 PM', label: 'Afternoon (বিকাল)', duration: '4 Hours' },
+    { id: 'slot3', timeRange: '7:00 PM–11:00 PM', label: 'Night (রাত)', duration: '4 Hours' },
   ];
 
   const handleEditClick = (slot: RoutineSlot) => {
@@ -76,6 +75,7 @@ export const RoutineView: React.FC<RoutineViewProps> = ({ onStartSessionFromSlot
           <div className="flex items-center gap-2 text-xs text-teal-400 font-mono mb-1">
             <Clock className="w-4 h-4" />
             <span>11.5–12.0 Hours Daily Scheduled Study Blocks</span>
+            
           </div>
           <h2 className="text-lg font-bold text-white tracking-tight">
             Weekly BCS Study Routine (Saturday – Friday)

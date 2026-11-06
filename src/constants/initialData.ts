@@ -204,9 +204,9 @@ export const INITIAL_SUBJECTS: SubjectConfig[] = [
     id: 'ethics_governance',
     name: 'Ethics, Values and Good Governance',
     bcsMarks: 10,
-    totalPages: null, // explicitly unconfigured per requirements
+    totalPages: 80, // explicitly unconfigured per requirements
     isSubSubject: false,
-    bookName: 'Uttoron Ethics, Values & Good Governance (Pending Config)',
+    bookName: 'Uttoron Ethics, Values & Good Governance',
     completedIntervals: [],
     topics: [
       { id: 'eth-1', title: 'নৈতিকতা ও মূল্যবোধের সংজ্ঞা ও উৎস', status: 'not_started' },
@@ -219,46 +219,39 @@ export const INITIAL_SUBJECTS: SubjectConfig[] = [
 
 export const INITIAL_ROUTINE: RoutineSlot[] = [
   // Saturday
-  { id: 'sat-1', dayOfWeek: 'Saturday', timeRange: '6:30–10:00', slotId: 'slot1', subjectId: 'bangla_grammar', customLabel: 'Bangla (Grammar / Lit)' },
-  { id: 'sat-2', dayOfWeek: 'Saturday', timeRange: '10:30–2:00', slotId: 'slot2', subjectId: 'bangladesh_affairs', customLabel: 'Bangladesh Affairs' },
-  { id: 'sat-3', dayOfWeek: 'Saturday', timeRange: '3:30–7:00', slotId: 'slot3', subjectId: 'mathematical_reasoning', customLabel: 'Mathematics' },
-  { id: 'sat-4', dayOfWeek: 'Saturday', timeRange: '8:00–9:00', slotId: 'slot4', subjectId: 'revision', customLabel: 'Revision & Notes' },
+  { id: 'sat-1', dayOfWeek: 'Saturday', timeRange: '6:30 AM–12:30 PM', slotId: 'slot1', subjectId: 'bangladesh_affairs', customLabel: 'Bangladesh Affairs' },
+  { id: 'sat-2', dayOfWeek: 'Saturday', timeRange: '2:00 PM–6:00 PM', slotId: 'slot2', subjectId: 'bangla_grammar', customLabel: 'Bangla Grammar' },
+  { id: 'sat-3', dayOfWeek: 'Saturday', timeRange: '7:00 PM–11:00 PM', slotId: 'slot3', subjectId: 'mathematical_reasoning', customLabel: 'Mathematical Reasoning' },
 
   // Sunday
-  { id: 'sun-1', dayOfWeek: 'Sunday', timeRange: '6:30–10:00', slotId: 'slot1', subjectId: 'english_language', customLabel: 'English (Language / Lit)' },
-  { id: 'sun-2', dayOfWeek: 'Sunday', timeRange: '10:30–2:00', slotId: 'slot2', subjectId: 'international_affairs', customLabel: 'International Affairs' },
-  { id: 'sun-3', dayOfWeek: 'Sunday', timeRange: '3:30–7:00', slotId: 'slot3', subjectId: 'computer_ict', customLabel: 'Computer & ICT' },
-  { id: 'sun-4', dayOfWeek: 'Sunday', timeRange: '8:00–9:00', slotId: 'slot4', subjectId: 'revision', customLabel: 'Revision & Notes' },
+  { id: 'sun-1', dayOfWeek: 'Sunday', timeRange: '6:30 AM–12:30 PM', slotId: 'slot1', subjectId: 'international_affairs', customLabel: 'International Affairs' },
+  { id: 'sun-2', dayOfWeek: 'Sunday', timeRange: '2:00 PM–6:00 PM', slotId: 'slot2', subjectId: 'english_language', customLabel: 'English Language' },
+  { id: 'sun-3', dayOfWeek: 'Sunday', timeRange: '7:00 PM–11:00 PM', slotId: 'slot3', subjectId: 'bangla_literature', customLabel: 'Bangla Literature' },
 
   // Monday
-  { id: 'mon-1', dayOfWeek: 'Monday', timeRange: '6:30–10:00', slotId: 'slot1', subjectId: 'bangla_literature', customLabel: 'Bangla (Lit / Grammar)' },
-  { id: 'mon-2', dayOfWeek: 'Monday', timeRange: '10:30–2:00', slotId: 'slot2', subjectId: 'bangladesh_affairs', customLabel: 'Bangladesh Affairs' },
-  { id: 'mon-3', dayOfWeek: 'Monday', timeRange: '3:30–7:00', slotId: 'slot3', subjectId: 'mental_ability', customLabel: 'Mental Ability' },
-  { id: 'mon-4', dayOfWeek: 'Monday', timeRange: '8:00–9:00', slotId: 'slot4', subjectId: 'revision', customLabel: 'Revision & Notes' },
+  { id: 'mon-1', dayOfWeek: 'Monday', timeRange: '6:30 AM–12:30 PM', slotId: 'slot1', subjectId: 'bangladesh_affairs', customLabel: 'Bangladesh Affairs' },
+  { id: 'mon-2', dayOfWeek: 'Monday', timeRange: '2:00 PM–6:00 PM', slotId: 'slot2', subjectId: 'bangla_grammar', customLabel: 'Bangla Grammar' },
+  { id: 'mon-3', dayOfWeek: 'Monday', timeRange: '7:00 PM–11:00 PM', slotId: 'slot3', subjectId: 'mathematical_reasoning', customLabel: 'Mathematical Reasoning' },
 
   // Tuesday
-  { id: 'tue-1', dayOfWeek: 'Tuesday', timeRange: '6:30–10:00', slotId: 'slot1', subjectId: 'english_literature', customLabel: 'English (Lit / Language)' },
-  { id: 'tue-2', dayOfWeek: 'Tuesday', timeRange: '10:30–2:00', slotId: 'slot2', subjectId: 'mathematical_reasoning', customLabel: 'Mathematics' },
-  { id: 'tue-3', dayOfWeek: 'Tuesday', timeRange: '3:30–7:00', slotId: 'slot3', subjectId: 'general_science', customLabel: 'General Science' },
-  { id: 'tue-4', dayOfWeek: 'Tuesday', timeRange: '8:00–9:00', slotId: 'slot4', subjectId: 'revision', customLabel: 'Revision & Notes' },
+  { id: 'tue-1', dayOfWeek: 'Tuesday', timeRange: '6:30 AM–12:30 PM', slotId: 'slot1', subjectId: 'international_affairs', customLabel: 'International Affairs' },
+  { id: 'tue-2', dayOfWeek: 'Tuesday', timeRange: '2:00 PM–6:00 PM', slotId: 'slot2', subjectId: 'english_language', customLabel: 'English Language' },
+  { id: 'tue-3', dayOfWeek: 'Tuesday', timeRange: '7:00 PM–11:00 PM', slotId: 'slot3', subjectId: 'bangla_literature', customLabel: 'Bangla Literature' },
 
   // Wednesday
-  { id: 'wed-1', dayOfWeek: 'Wednesday', timeRange: '6:30–10:00', slotId: 'slot1', subjectId: 'bangla_grammar', customLabel: 'Bangla (Grammar / Lit)' },
-  { id: 'wed-2', dayOfWeek: 'Wednesday', timeRange: '10:30–2:00', slotId: 'slot2', subjectId: 'bangladesh_affairs', customLabel: 'Bangladesh Affairs' },
-  { id: 'wed-3', dayOfWeek: 'Wednesday', timeRange: '3:30–7:00', slotId: 'slot3', subjectId: 'international_affairs', customLabel: 'International Affairs' },
-  { id: 'wed-4', dayOfWeek: 'Wednesday', timeRange: '8:00–9:00', slotId: 'slot4', subjectId: 'revision', customLabel: 'Revision & Notes' },
+  { id: 'wed-1', dayOfWeek: 'Wednesday', timeRange: '6:30 AM–12:30 PM', slotId: 'slot1', subjectId: 'bangladesh_affairs', customLabel: 'Bangladesh Affairs' },
+  { id: 'wed-2', dayOfWeek: 'Wednesday', timeRange: '2:00 PM–6:00 PM', slotId: 'slot2', subjectId: 'general_science', customLabel: 'General Science' },
+  { id: 'wed-3', dayOfWeek: 'Wednesday', timeRange: '7:00 PM–11:00 PM', slotId: 'slot3', subjectId: 'mathematical_reasoning', customLabel: 'Mathematical Reasoning' },
 
   // Thursday
-  { id: 'thu-1', dayOfWeek: 'Thursday', timeRange: '6:30–10:00', slotId: 'slot1', subjectId: 'english_language', customLabel: 'English (Language / Lit)' },
-  { id: 'thu-2', dayOfWeek: 'Thursday', timeRange: '10:30–2:00', slotId: 'slot2', subjectId: 'mathematical_reasoning', customLabel: 'Mathematics' },
-  { id: 'thu-3', dayOfWeek: 'Thursday', timeRange: '3:30–7:00', slotId: 'slot3', subjectId: 'geography_environment', customLabel: 'Geography & Disaster Mgmt' },
-  { id: 'thu-4', dayOfWeek: 'Thursday', timeRange: '8:00–9:00', slotId: 'slot4', subjectId: 'revision', customLabel: 'Revision & Notes' },
+  { id: 'thu-1', dayOfWeek: 'Thursday', timeRange: '6:30 AM–12:30 PM', slotId: 'slot1', subjectId: 'international_affairs', customLabel: 'International Affairs' },
+  { id: 'thu-2', dayOfWeek: 'Thursday', timeRange: '2:00 PM–6:00 PM', slotId: 'slot2', subjectId: 'mental_ability', customLabel: 'Mental Ability' },
+  { id: 'thu-3', dayOfWeek: 'Thursday', timeRange: '7:00 PM–11:00 PM', slotId: 'slot3', subjectId: 'bangla_literature', customLabel: 'Bangla Literature' },
 
-  // Friday (Assessment & Review)
-  { id: 'fri-1', dayOfWeek: 'Friday', timeRange: '6:30–10:00', slotId: 'slot1', subjectId: 'model_test', customLabel: 'Full Model Test (200 Marks)' },
-  { id: 'fri-2', dayOfWeek: 'Friday', timeRange: '10:30–2:00', slotId: 'slot2', subjectId: 'model_test_analysis', customLabel: 'Test Analysis & Weak Areas' },
-  { id: 'fri-3', dayOfWeek: 'Friday', timeRange: '3:30–7:00', slotId: 'slot3', subjectId: 'revision', customLabel: 'Weekly Master Revision' },
-  { id: 'fri-4', dayOfWeek: 'Friday', timeRange: '8:00–9:00', slotId: 'slot4', subjectId: 'planning', customLabel: 'Weekly Planning & Goal Setup' },
+  // Friday (Career Focus Day)
+  { id: 'fri-1', dayOfWeek: 'Friday', timeRange: '6:30 AM–12:30 PM', slotId: 'slot1', subjectId: 'career_focus', customLabel: 'CSE Core Skills Revision' },
+  { id: 'fri-2', dayOfWeek: 'Friday', timeRange: '2:00 PM–6:00 PM', slotId: 'slot2', subjectId: 'career_focus', customLabel: 'Coding, Projects & ML Practice' },
+  { id: 'fri-3', dayOfWeek: 'Friday', timeRange: '7:00 PM–11:00 PM', slotId: 'slot3', subjectId: 'career_focus', customLabel: 'Career Planning & Weekly Review' },
 ];
 
 export const INITIAL_USER_PROFILE: UserPrepProfile = {
