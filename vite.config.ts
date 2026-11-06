@@ -20,38 +20,16 @@
 //     },
 //   };
 // });
-
-
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
-import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(() => {
   return {
     plugins: [
       react(), 
-      tailwindcss(),
-      VitePWA({
-        registerType: 'autoUpdate',
-        injectRegister: 'inline', // সাদা স্ক্রিন এরর ফিক্স করার জন্য এটি অত্যন্ত জরুরি
-        includeAssets: ['favicon-32.png', 'apple-touch-icon.png', 'logo.svg'],
-        manifest: {
-          name: 'Raihan BCS Tracker',
-          short_name: 'BCS Tracker',
-          description: 'BCS Preliminary preparation tracker',
-          display: 'standalone',
-          start_url: '/',
-          background_color: '#020617',
-          theme_color: '#020617',
-          icons: [
-            { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-            { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
-            { src: '/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
-          ],
-        },
-      })
+      tailwindcss()
     ],
     resolve: {
       alias: {
@@ -59,8 +37,11 @@ export default defineConfig(() => {
       },
     },
     server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
       hmr: process.env.DISABLE_HMR !== 'true',
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };
 });
+
+
