@@ -259,7 +259,7 @@ export const INITIAL_USER_PROFILE: UserPrepProfile = {
   targetRank: 'Top Rank / Safe Common Preliminary Selection',
   startDate: new Date().toISOString().split('T')[0],
   targetDurationMonths: 4,
-  dailyHourTarget: 12,
+  dailyHourTarget: 14,
   primaryBookSeries: 'Uttoron BCS Preparation Books',
   questionBankSeries: 'Assurance Question Bank',
   academicBackground: 'Computer Science and Engineering',

@@ -205,13 +205,22 @@ export const PrepProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   });
 
   const [profile, setProfile] = useState<UserPrepProfile>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_profile`);
-      return saved ? JSON.parse(saved) : INITIAL_USER_PROFILE;
-    } catch {
-      return INITIAL_USER_PROFILE;
+  try {
+    const saved = localStorage.getItem(`${STORAGE_KEY}_profile`);
+    if (!saved) return INITIAL_USER_PROFILE;
+
+    const parsed = JSON.parse(saved);
+
+    // One-time fix: saved profile-এর daily target default (14) দিয়ে বদলাও
+    if (localStorage.getItem(`${STORAGE_KEY}_profile_fix1`) !== 'done') {
+      localStorage.setItem(`${STORAGE_KEY}_profile_fix1`, 'done');
+      return { ...parsed, dailyHourTarget: INITIAL_USER_PROFILE.dailyHourTarget };
     }
-  });
+    return parsed;
+  } catch {
+    return INITIAL_USER_PROFILE;
+  }
+ });
 
   const [currentView, setCurrentView] = useState<AppView>('dashboard');
 
