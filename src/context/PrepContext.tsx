@@ -97,17 +97,67 @@ interface PrepContextType {
 
 const STORAGE_KEY = 'bcs_prep_tracker_v1';
 
+// ✱ CHANGED: initialData.ts-এ subject/topic/page count বদলালে এই সংখ্যাটা +1 করো
+const SCHEMA_VERSION = 2;
+
+// ✱ CHANGED: saved subjects-কে নতুন default-এর সাথে merge করে, user-এর progress অক্ষত রাখে
+const migrateSubjects = (parsed: SubjectConfig[]): SubjectConfig[] => {
+  const merged = INITIAL_SUBJECTS.map((def) => {
+    const old = parsed.find((s) => s.id === def.id);
+    if (!old) return def;
+
+    const validPages = !!old.totalPages && old.totalPages > 0;
+
+    // default topic-গুলো নাও, কিন্তু saved status/অন্য field রাখো
+    const topics = def.topics.map((t) => {
+      const oldTopic = old.topics?.find((x) => x.id === t.id);
+      return oldTopic ? { ...t, ...oldTopic, title: t.title } : t;
+    });
+    // user নিজে যোগ করা topic রেখে দাও
+    const custom = (old.topics || []).filter(
+      (t) => !def.topics.some((d) => d.id === t.id)
+    );
+
+    return {
+      ...def,
+      totalPages: validPages ? old.totalPages : def.totalPages,
+      completedIntervals: old.completedIntervals || [],
+      topics: [...topics, ...custom],
+    };
+  });
+
+  // user-এর নিজের বানানো subject থাকলে রেখে দাও
+  const extra = parsed.filter((s) => !INITIAL_SUBJECTS.some((d) => d.id === s.id));
+
+  return [...merged, ...extra];
+};
+
+// ✱ CHANGED: subjects লোড করার নতুন ফাংশন
+const loadSubjects = (): SubjectConfig[] => {
+  try {
+    const saved = localStorage.getItem(`${STORAGE_KEY}_subjects`);
+    if (!saved) {
+      localStorage.setItem(`${STORAGE_KEY}_schema`, String(SCHEMA_VERSION));
+      return INITIAL_SUBJECTS;
+    }
+
+    const parsed: SubjectConfig[] = JSON.parse(saved);
+    const savedVersion = Number(localStorage.getItem(`${STORAGE_KEY}_schema`) || 1);
+    if (savedVersion >= SCHEMA_VERSION) return parsed;
+
+    const migrated = migrateSubjects(parsed);
+    localStorage.setItem(`${STORAGE_KEY}_schema`, String(SCHEMA_VERSION));
+    return migrated;
+  } catch {
+    return INITIAL_SUBJECTS;
+  }
+};
+
 const PrepContext = createContext<PrepContextType | undefined>(undefined);
 
 export const PrepProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [subjects, setSubjects] = useState<SubjectConfig[]>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_subjects`);
-      return saved ? JSON.parse(saved) : INITIAL_SUBJECTS;
-    } catch {
-      return INITIAL_SUBJECTS;
-    }
-  });
+  // ✱ CHANGED: আগের try/catch ব্লকের বদলে loadSubjects
+  const [subjects, setSubjects] = useState<SubjectConfig[]>(loadSubjects);
 
   const [sessions, setSessions] = useState<StudySession[]>(() => {
     try {
@@ -655,7 +705,9 @@ export const PrepProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         return { success: false, error: 'Invalid backup file format: missing subjects array.' };
       }
 
-      setSubjects(data.subjects);
+      // ✱ CHANGED: import করা পুরনো backup-এও migration চলবে
+      setSubjects(migrateSubjects(data.subjects));
+      localStorage.setItem(`${STORAGE_KEY}_schema`, String(SCHEMA_VERSION));
       if (Array.isArray(data.sessions)) setSessions(data.sessions);
       if (Array.isArray(data.routine)) setRoutine(data.routine);
       if (Array.isArray(data.revisions)) setRevisions(data.revisions);
@@ -670,6 +722,8 @@ export const PrepProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const resetToDefaults = () => {
+    // ✱ CHANGED: reset-এর পর schema version আপ-টু-ডেট রাখো
+    localStorage.setItem(`${STORAGE_KEY}_schema`, String(SCHEMA_VERSION));
     setSubjects(INITIAL_SUBJECTS);
     setSessions([]);
     setRoutine(INITIAL_ROUTINE);
