@@ -125,13 +125,13 @@ export const SettingsView: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
+          {/* <button
             onClick={loadSampleData}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-teal-400 rounded-lg font-medium border border-slate-700 transition-colors"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Load Demo Data</span>
-          </button>
+          </button> */}
           <button
             onClick={() => {
               if (window.confirm('Reset all progress back to fresh zero state?')) {
